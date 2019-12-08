@@ -9,7 +9,6 @@ export const BackGround = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url(${BackgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
 `;
@@ -82,6 +81,7 @@ export const InputEmail = styled.input.attrs({
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
+  border-radius: 6px;
   padding: 10px;
   color: #555;
 `;
@@ -94,6 +94,7 @@ export const InputPassword = styled.input.attrs({
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
+  border-radius: 6px;
   padding: 10px;
   color: #555;
   margin-top: 25px;
@@ -122,22 +123,4 @@ export const LoginButton = styled.button`
   :hover {
     background: #147d4e;
   }
-`;
-
-export const ErrorMessage = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 45px;
-  width: 100%;
-  background: #eb4034;
-  border-radius: 4px;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const ErrorTitle = styled.text`
-  color: #fff;
-  font-size: 14px;
-  text-align: center;
 `;
