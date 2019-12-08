@@ -4,12 +4,27 @@ import { BackGround } from "./styles";
 
 import api from "../../services/api";
 
+import {
+  NavBar,
+  DivHeader,
+  Container,
+  PageTitle
+} from "../../components/global";
+
+import ImageHeader from "../../assets/logo512.png";
+
 export default class Admin extends Component {
   state = {
-    notLogged: false
+    notLogged: false,
+    exit: false,
+    loading: false
   };
 
   async componentWillMount() {
+    this.setState({
+      loading: true
+    });
+
     const token = await localStorage.getItem("@userIdentification");
     const response = await api
       .post("/session/verify", {
@@ -26,7 +41,8 @@ export default class Admin extends Component {
 
     if (response) {
       this.setState({
-        notLogged: false
+        notLogged: false,
+        loading: false
       });
     }
 
@@ -37,13 +53,49 @@ export default class Admin extends Component {
     }
   }
 
+  refreshPage() {
+    window.location.reload();
+  }
+
+  async handleExit() {
+    localStorage.removeItem("@userIdentification");
+    await this.setState({
+      exit: true
+    });
+  }
+
   render() {
     if (this.state.notLogged === true) {
       return <Redirect to="/admin?info=timeout"> </Redirect>;
     }
+    if (this.state.exit === true) {
+      return <Redirect to="/admin?info=signout"> </Redirect>;
+    }
+    if (this.state.loading === true) {
+      return <> </>;
+    }
     return (
       <>
-        <BackGround></BackGround>
+        <BackGround>
+          <NavBar>
+            <DivHeader onClick={() => this.refreshPage()}>
+              <img src={ImageHeader} alt="" />
+              <span>Central de Captações - Aluguel Jundiaí</span>
+            </DivHeader>
+            <DivHeader></DivHeader>
+            <DivHeader>
+              <ul>
+                <li>Captações</li>
+                <li>Enviadas</li>
+                <li>Configurações</li>
+                <li onClick={() => this.handleExit()}>Sair</li>
+              </ul>
+            </DivHeader>
+          </NavBar>
+          <Container>
+            <PageTitle>Início</PageTitle>
+          </Container>
+        </BackGround>
       </>
     );
   }

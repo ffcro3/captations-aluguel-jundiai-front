@@ -87,6 +87,7 @@ export default class Admin extends Component {
                     email: e.target.value
                   });
                 }}
+                autoComplete={true}
               />
               <InputPassword
                 onChange={e => {
@@ -94,6 +95,7 @@ export default class Admin extends Component {
                     password: e.target.value
                   });
                 }}
+                autoComplete={true}
               />
               <LoginButton onClick={e => this.handleSubmit(e)}>
                 Entrar
@@ -106,6 +108,14 @@ export default class Admin extends Component {
                     Tempo de inatividade limite. <br />
                     Faça o login novamente.
                   </ErrorTitle>
+                </ErrorMessage>
+              ) : (
+                ""
+              )}
+
+              {error === "signout" ? (
+                <ErrorMessage>
+                  <ErrorTitle>Desconectado com sucesso</ErrorTitle>
                 </ErrorMessage>
               ) : (
                 ""
