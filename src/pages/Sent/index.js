@@ -80,7 +80,7 @@ export default class Admin extends Component {
         <BackGround>
           <Header />
           <Container>
-            <PageTitle>Início</PageTitle>
+            <PageTitle>Captações Enviadas</PageTitle>
           </Container>
         </BackGround>
       </>
