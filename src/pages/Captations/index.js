@@ -5,27 +5,15 @@ import { BackGround } from "./styles";
 import api from "../../services/api";
 import Header from "../../components/Header";
 
-import {
-  NavBar,
-  DivHeader,
-  Container,
-  PageTitle
-} from "../../components/global";
-
-import ImageHeader from "../../assets/logo512.png";
+import { Container, PageTitle } from "../../components/global";
 
 export default class Admin extends Component {
   state = {
     notLogged: false,
-    exit: false,
-    loading: false
+    exit: false
   };
 
   async componentWillMount() {
-    this.setState({
-      loading: true
-    });
-
     const token = await localStorage.getItem("@userIdentification");
     const response = await api
       .post("/session/verify", {
@@ -42,8 +30,7 @@ export default class Admin extends Component {
 
     if (response) {
       this.setState({
-        notLogged: false,
-        loading: false
+        notLogged: false
       });
     }
 
@@ -72,9 +59,7 @@ export default class Admin extends Component {
     if (this.state.exit === true) {
       return <Redirect to="/admin?info=signout"> </Redirect>;
     }
-    if (this.state.loading === true) {
-      return <> </>;
-    }
+
     return (
       <>
         <BackGround>

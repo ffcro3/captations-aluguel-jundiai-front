@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import history from "./config/history";
 
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
