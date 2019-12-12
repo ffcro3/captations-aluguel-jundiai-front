@@ -1,75 +1,59 @@
-import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import { BackGround } from "./styles";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import api from "../../services/api";
+
 import Header from "../../components/Header";
 
 import { Container, PageTitle } from "../../components/global";
+import { BackGround } from "./styles";
 
-import ImageHeader from "../../assets/logo512.png";
+export default function Captations() {
+  const [notLogged, setNotLogged] = useState([]);
+  const [exit] = useState([]);
+  const history = useHistory();
 
-export default class Admin extends Component {
-  state = {
-    notLogged: false,
-    exit: false
-  };
+  useEffect(() => {
+    async function checkUser() {
+      const token = await localStorage.getItem("@userIdentification");
+      const response = await api
+        .post("/session/verify", {
+          token
+        })
+        .catch(function(error) {
+          console.log(error.response.data);
+          if (error.response.data.message === "jwt expired") {
+            localStorage.removeItem("@userIdentification");
+          }
+          if (error.response.data.message === "jwt must be provided") {
+          }
+        });
 
-  async componentWillMount() {
-    const token = await localStorage.getItem("@userIdentification");
-    const response = await api
-      .post("/session/verify", {
-        token
-      })
-      .catch(function(error) {
-        console.log(error.response.data);
-        if (error.response.data.message === "jwt expired") {
-          localStorage.removeItem("@userIdentification");
-        }
-        if (error.response.data.message === "jwt must be provided") {
-        }
-      });
+      if (response) {
+        setNotLogged(false);
+      }
 
-    if (response) {
-      this.setState({
-        notLogged: false
-      });
+      if (!response) {
+        setNotLogged(true);
+      }
     }
+    checkUser();
+  });
 
-    if (!response) {
-      this.setState({
-        notLogged: true
-      });
-    }
+  if (notLogged === true) {
+    history.push("/admin?info=timeout");
   }
-
-  refreshPage() {
-    window.location.reload();
+  if (exit === true) {
+    history.push("/admin?info=signout");
   }
-
-  async handleExit() {
-    localStorage.removeItem("@userIdentification");
-    await this.setState({
-      exit: true
-    });
-  }
-
-  render() {
-    if (this.state.notLogged === true) {
-      return <Redirect to="/admin?info=timeout"> </Redirect>;
-    }
-    if (this.state.exit === true) {
-      return <Redirect to="/admin?info=signout"> </Redirect>;
-    }
-    return (
-      <>
-        <BackGround>
-          <Header />
-          <Container>
-            <PageTitle>Configurações</PageTitle>
-          </Container>
-        </BackGround>
-      </>
-    );
-  }
+  return (
+    <>
+      <BackGround>
+        <Header />
+        <Container>
+          <PageTitle>Configurações</PageTitle>
+        </Container>
+      </BackGround>
+    </>
+  );
 }

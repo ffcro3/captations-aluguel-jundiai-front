@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Logotipo from "../../assets/logoFull.png";
-import BackgroundImage from "../../assets/jundiai.jpg";
 import Side from "../../assets/side.jpg";
 
 export const BackGround = styled.div`

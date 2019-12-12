@@ -11,6 +11,11 @@ export default function Header() {
     history.push(`/admin/${page}`);
   }
 
+  async function exit() {
+    await localStorage.removeItem("@userIdentification");
+    history.push(`/admin?info=signout`);
+  }
+
   return (
     <>
       <NavBar>
@@ -24,7 +29,7 @@ export default function Header() {
             <li onClick={() => handlePage("captations")}>Captações</li>
             <li onClick={() => handlePage("sent")}>Enviadas</li>
             <li onClick={() => handlePage("settings")}>Configurações</li>
-            <li onClick="">Sair</li>
+            <li onClick={() => exit()}>Sair</li>
           </ul>
         </DivHeader>
       </NavBar>
