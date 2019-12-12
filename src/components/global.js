@@ -67,6 +67,79 @@ export const Container = styled.div`
 
 export const PageTitle = styled.h2`
   margin: 40px;
+  margin-bottom: -10px;
   color: #555;
   font-weight: bold;
+`;
+
+export const Table = styled.table`
+  width: 95%;
+  margin: 30px auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  tr {
+    border-top: none;
+    & + tr {
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+  td {
+    padding: 10px;
+  }
+`;
+
+export const TableData = styled.td`
+  font-size: 13px;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+`;
+
+export const TableHeader = styled.td`
+  font-size: 13px;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 700;
+`;
+
+export const TableButton = styled.button`
+  height: 30px;
+  width: 80%;
+  background: #4257d6;
+  border: none;
+  color: #fff;
+  border-radius: 2px;
+
+  :hover {
+    background: #147d4e;
+    cursor: pointer;
+  }
+`;
+
+export const Pagination = styled.div`
+  display: flex;
+  margin: 20px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const PaginationButton = styled.button`
+  height: 35px;
+  width: 10%;
+  background: #4257d6;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+
+  :hover {
+    background: #147d4e;
+    cursor: pointer;
+  }
+`;
+
+export const PaginationInfo = styled.text`
+  font-size: 14px;
+  color: #666;
 `;

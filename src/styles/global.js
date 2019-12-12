@@ -13,8 +13,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #3DB54B;
-    -webkit-font-smoothing: antialiased !important;
+    background: radial-gradient(circle at bottom, #258530 , #83f290);
+        -webkit-font-smoothing: antialiased !important;
   }
 
   body, input, button {

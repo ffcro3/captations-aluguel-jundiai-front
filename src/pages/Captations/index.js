@@ -4,12 +4,14 @@ import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
 import Header from "../../components/Header";
+import CaptationsTable from "../../components/CaptationsTable";
 
 import { Container, PageTitle } from "../../components/global";
 import { BackGround } from "./styles";
 
 export default function Captations() {
   const [notLogged, setNotLogged] = useState([]);
+  const [captations, setCaptations] = useState([]);
   const [exit] = useState([]);
   const history = useHistory();
 
@@ -52,6 +54,7 @@ export default function Captations() {
         <Header />
         <Container>
           <PageTitle>Captações</PageTitle>
+          <CaptationsTable />
         </Container>
       </BackGround>
     </>
