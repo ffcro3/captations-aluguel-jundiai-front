@@ -143,3 +143,29 @@ export const PaginationInfo = styled.text`
   font-size: 14px;
   color: #666;
 `;
+
+export const PageFooter = styled.div`
+  display: flex;
+  height: 50px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  p {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+
+    a {
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+
+      :hover {
+        cursor: pointer;
+        color: #ccc;
+      }
+    }
+  }
+`;

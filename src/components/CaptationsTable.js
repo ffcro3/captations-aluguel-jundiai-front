@@ -14,25 +14,20 @@ import {
 
 export default function CaptationsTable() {
   const [captations, setCaptations] = useState([]);
-  const [page, setPage] = useState([]);
+  const [page, setPage] = useState(1);
   const [allPages, setAllPages] = useState([]);
-
-  useEffect(() => {
-    setPage(1);
-    loadNewCaptations();
-  }, []);
+  const token = localStorage.getItem("@userIdentification");
 
   useEffect(() => {
     loadNewCaptations();
-  });
+  }, [page]);
 
   async function nextPageClick() {
     await setPage(page + 1);
-    console.log("Previous");
+    await loadNewCaptations();
   }
 
   async function loadNewCaptations() {
-    const token = localStorage.getItem("@userIdentification");
     const response = await api.get(`/captations?page=${page}`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -44,13 +39,14 @@ export default function CaptationsTable() {
         Authorization: `Bearer ${token}`
       }
     });
-    await setAllPages(pages);
+    await setAllPages(pages.data);
     await setCaptations(response.data);
   }
 
   async function PreviousPageClick() {
     await setPage(page - 1);
-    console.log("Previous");
+
+    await loadNewCaptations();
   }
 
   return (

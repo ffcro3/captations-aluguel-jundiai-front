@@ -3,11 +3,13 @@ import Logotipo from "../../assets/logoFull.png";
 import Side from "../../assets/side.jpg";
 
 export const BackGround = styled.div`
+  margin-top: 100px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 `;

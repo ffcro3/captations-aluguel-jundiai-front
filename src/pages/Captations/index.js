@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import CaptationsTable from "../../components/CaptationsTable";
 
 import { Container, PageTitle } from "../../components/global";
@@ -11,11 +12,12 @@ import { BackGround } from "./styles";
 
 export default function Captations() {
   const [notLogged, setNotLogged] = useState([]);
-  const [captations, setCaptations] = useState([]);
+  const [loading, setLoading] = useState([]);
   const [exit] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
+    setLoading(true);
     async function checkUser() {
       const token = await localStorage.getItem("@userIdentification");
       const response = await api
@@ -40,6 +42,7 @@ export default function Captations() {
       }
     }
     checkUser();
+    setLoading(false);
   });
 
   if (notLogged === true) {
@@ -47,6 +50,13 @@ export default function Captations() {
   }
   if (exit === true) {
     history.push("/admin?info=signout");
+  }
+  if (loading) {
+    return (
+      <>
+        <h1>Carregando...</h1>
+      </>
+    );
   }
   return (
     <>
@@ -56,6 +66,7 @@ export default function Captations() {
           <PageTitle>Captações</PageTitle>
           <CaptationsTable />
         </Container>
+        <Footer />
       </BackGround>
     </>
   );
