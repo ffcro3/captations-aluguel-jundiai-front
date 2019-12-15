@@ -5,7 +5,7 @@ import api from "../../services/api";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import CaptationsTable from "../../components/CaptationsTable";
+import CaptationsTable from "../../components/Tables/CaptationsTable";
 
 import { Container, PageTitle } from "../../components/global";
 import { BackGround } from "./styles";

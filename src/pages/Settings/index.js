@@ -57,6 +57,10 @@ export default function Captations() {
   if (exit === true) {
     history.push("/admin?info=signout");
   }
+
+  function goTo(page) {
+    history.push(`/admin/${page}`);
+  }
   return (
     <>
       <BackGround>
@@ -64,7 +68,7 @@ export default function Captations() {
         <Container>
           <PageTitle>Configurações</PageTitle>
           <SettingsLogo />
-          <SettingsContainer>
+          <SettingsContainer onClick={() => goTo("users")}>
             <IconContainer>
               <FaUserCog
                 style={{ color: "#147d4e", height: "50px", width: "auto" }}
@@ -78,7 +82,7 @@ export default function Captations() {
             </TextContainer>
           </SettingsContainer>
 
-          <SettingsContainer>
+          <SettingsContainer onClick={() => goTo("smtp")}>
             <IconContainer>
               <FaMailBulk
                 style={{ color: "#147d4e", height: "50px", width: "auto" }}
@@ -90,7 +94,7 @@ export default function Captations() {
             </TextContainer>
           </SettingsContainer>
 
-          <SettingsContainer>
+          <SettingsContainer onClick={() => goTo("documents")}>
             <IconContainer>
               <MdDeleteForever
                 style={{ color: "#147d4e", height: "50px", width: "auto" }}
@@ -105,7 +109,7 @@ export default function Captations() {
             </TextContainer>
           </SettingsContainer>
 
-          <SettingsContainer>
+          <SettingsContainer onClick={() => goTo("reports")}>
             <IconContainer>
               <FaFileExcel
                 style={{ color: "#147d4e", height: "50px", width: "auto" }}

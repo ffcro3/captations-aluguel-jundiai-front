@@ -5,12 +5,12 @@ import api from "../../services/api";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import SentTable from "../../components/Tables/SentTable";
+import UserForm from "../../components/UserForm";
 
-import { Container, PageTitle } from "../../components/global";
-import { BackGround } from "./styles";
+import { Container } from "../../components/global";
+import { BackGround, BackButton } from "./styles";
 
-export default function Captations() {
+export default function Property() {
   const [notLogged, setNotLogged] = useState([]);
   const [loading, setLoading] = useState([]);
   const [exit] = useState([]);
@@ -18,6 +18,7 @@ export default function Captations() {
 
   useEffect(() => {
     setLoading(true);
+
     async function checkUser() {
       const token = await localStorage.getItem("@userIdentification");
       const response = await api
@@ -41,9 +42,10 @@ export default function Captations() {
         setNotLogged(true);
       }
     }
+
     checkUser();
     setLoading(false);
-  });
+  }, []);
 
   if (notLogged === true) {
     history.push("/admin?info=timeout");
@@ -58,13 +60,14 @@ export default function Captations() {
       </>
     );
   }
+
   return (
     <>
       <BackGround>
         <Header />
         <Container>
-          <PageTitle>Captações Enviadas</PageTitle>
-          <SentTable />
+          <BackButton onClick={() => history.goBack()}>← Voltar</BackButton>
+          <UserForm />
         </Container>
         <Footer />
       </BackGround>

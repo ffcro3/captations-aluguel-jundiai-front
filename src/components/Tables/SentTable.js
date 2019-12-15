@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import api from "../services/api";
+import api from "../../services/api";
 
 import {
   Table,
@@ -12,7 +12,7 @@ import {
   PaginationButton,
   PaginationInfo,
   TableAlert
-} from "./global";
+} from "../global";
 
 export default function CaptationsTable() {
   const [captations, setCaptations] = useState([]);

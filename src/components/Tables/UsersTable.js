@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import api from "../services/api";
+import api from "../../services/api";
 
 import {
   Table,
@@ -12,48 +12,48 @@ import {
   PaginationButton,
   PaginationInfo,
   TableAlert
-} from "./global";
+} from "../global";
 
 export default function CaptationsTable() {
-  const [captations, setCaptations] = useState([]);
+  const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [allPages, setAllPages] = useState([]);
   const token = localStorage.getItem("@userIdentification");
   const history = useHistory();
 
   useEffect(() => {
-    loadNewCaptations();
+    loadUsers();
   }, [page]);
 
   async function nextPageClick() {
     await setPage(page + 1);
-    await loadNewCaptations();
+    await loadUsers();
   }
 
-  async function loadNewCaptations() {
-    const response = await api.get(`/captations?page=${page}`, {
+  async function loadUsers() {
+    const response = await api.get(`/users?page=${page}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
 
-    const pages = await api.get(`/count`, {
+    const pages = await api.get(`/countUsers`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
     await setAllPages(pages.data);
-    await setCaptations(response.data);
+    await setUsers(response.data);
   }
 
   async function PreviousPageClick() {
     await setPage(page - 1);
 
-    await loadNewCaptations();
+    await loadUsers();
   }
 
-  async function openProperty(property) {
-    history.push(`/admin/property?code=${property}`);
+  async function openUser(id) {
+    history.push(`/admin/user-edit?id=${id}`);
   }
 
   return (
@@ -61,43 +61,40 @@ export default function CaptationsTable() {
       <Table>
         <tbody>
           <tr>
-            <TableHeader>COD.</TableHeader>
-            <TableHeader>Tipo</TableHeader>
-            <TableHeader>Cidade</TableHeader>
-            <TableHeader>Bairro</TableHeader>
-            <TableHeader>Finalidade</TableHeader>
-            <TableHeader>Lida</TableHeader>
-            <TableHeader>Enviada</TableHeader>
-            <TableHeader>Editar</TableHeader>
+            <TableHeader>Nome</TableHeader>
+            <TableHeader>Email</TableHeader>
+            <TableHeader>Telefone</TableHeader>
+            <TableHeader>Corretor?</TableHeader>
+            <TableHeader>Ativo?</TableHeader>
           </tr>
 
-          {captations.map((captation, index) => (
-            <tr key={captations[index]._id}>
+          {users.map((captation, index) => (
+            <tr key={users[index]._id}>
               <TableData>
-                <strong>{captations[index].code}</strong>
+                <strong>{users[index].name}</strong>
               </TableData>
-              <TableData>{captations[index].type}</TableData>
-              <TableData>{captations[index].city}</TableData>
-              <TableData>{captations[index].neighborhood}</TableData>
-              <TableData>{captations[index].finality}</TableData>
+              <TableData>{users[index].email}</TableData>
               <TableData>
-                {captations[index].isRead === true ? (
-                  <TableAlert sent>Lida</TableAlert>
+                {users[index].phone
+                  ? users[index].phone
+                  : "Não há telefone cadastrado"}
+              </TableData>
+              <TableData>
+                {users[index].isBroker === true ? (
+                  <TableAlert sent>Corretor</TableAlert>
                 ) : (
-                  <TableAlert>Não Lida</TableAlert>
+                  <TableAlert>Admin</TableAlert>
                 )}
               </TableData>
               <TableData>
-                {captations[index].isSent === true ? (
-                  <TableAlert sent>Enviada</TableAlert>
+                {users[index].active === true ? (
+                  <TableAlert sent>Ativo</TableAlert>
                 ) : (
-                  <TableAlert>Não Enviada</TableAlert>
+                  <TableAlert>Inativo</TableAlert>
                 )}
               </TableData>
               <TableData>
-                <TableButton
-                  onClick={() => openProperty(captations[index].code)}
-                >
+                <TableButton onClick={() => openUser(users[index]._id)}>
                   Editar
                 </TableButton>
               </TableData>

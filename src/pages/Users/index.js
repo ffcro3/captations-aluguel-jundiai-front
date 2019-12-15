@@ -5,7 +5,7 @@ import api from "../../services/api";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import SentTable from "../../components/Tables/SentTable";
+import UsersTable from "../../components/Tables/UsersTable";
 
 import { Container, PageTitle } from "../../components/global";
 import { BackGround } from "./styles";
@@ -63,8 +63,8 @@ export default function Captations() {
       <BackGround>
         <Header />
         <Container>
-          <PageTitle>Captações Enviadas</PageTitle>
-          <SentTable />
+          <PageTitle>Usuários</PageTitle>
+          <UsersTable />
         </Container>
         <Footer />
       </BackGround>
