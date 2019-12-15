@@ -7,7 +7,8 @@ export const BackGround = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  margin-top: 100px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
@@ -122,4 +123,66 @@ export const LoginButton = styled.button`
   :hover {
     background: #147d4e;
   }
+`;
+
+export const SettingsContainer = styled.div`
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
+  max-width: 60%;
+  border: 1px solid #66e8ae;
+  border-radius: 5px;
+  padding: 20px;
+
+  :first-child {
+    margin: 30px auto;
+  }
+
+  :last-child {
+    margin-bottom: 40px;
+  }
+
+  :hover {
+    background: #eee;
+    cursor: pointer;
+  }
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80px;
+`;
+
+export const TextContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  span {
+    font-size: 20px;
+    color: #147d4e;
+    font-weight: bold;
+  }
+
+  small {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+  }
+`;
+
+export const SettingsLogo = styled.img.attrs({
+  src: Logotipo
+})`
+  margin: 50px auto;
+  height: 100px;
+  width: auto;
 `;
