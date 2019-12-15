@@ -114,25 +114,40 @@ export default function PropertyForm() {
         <FormRow>
           <FormGroup>
             <FormLabel>Código:</FormLabel>
-            <FormInputText value={currentProperty.code}></FormInputText>
+            <FormInputText
+              value={currentProperty.code}
+              disabled
+            ></FormInputText>
           </FormGroup>
           <FormGroup>
             <FormLabel>Tipo:</FormLabel>
-            <FormInputText value={currentProperty.type}></FormInputText>
+            <FormInputText
+              value={currentProperty.type}
+              disabled
+            ></FormInputText>
           </FormGroup>
           <FormGroup>
             <FormLabel>Finalidade:</FormLabel>
-            <FormInputText value={currentProperty.finality}></FormInputText>
+            <FormInputText
+              value={currentProperty.finality}
+              disabled
+            ></FormInputText>
           </FormGroup>
         </FormRow>
         <FormRow>
           <FormGroup>
             <FormLabel>Cidade:</FormLabel>
-            <FormInputText value={currentProperty.type}></FormInputText>
+            <FormInputText
+              value={currentProperty.type}
+              disabled
+            ></FormInputText>
           </FormGroup>
           <FormGroup>
             <FormLabel>Bairro:</FormLabel>
-            <FormInputText value={currentProperty.neighborhood}></FormInputText>
+            <FormInputText
+              value={currentProperty.neighborhood}
+              disabled
+            ></FormInputText>
           </FormGroup>
         </FormRow>
 
@@ -140,17 +155,26 @@ export default function PropertyForm() {
         <FormRow>
           <FormGroup>
             <FormLabel>Nome:</FormLabel>
-            <FormInputText value={currentProperty.name}></FormInputText>
+            <FormInputText
+              value={currentProperty.name}
+              disabled
+            ></FormInputText>
           </FormGroup>
         </FormRow>
         <FormRow>
           <FormGroup>
             <FormLabel>Telefone:</FormLabel>
-            <FormInputText value={currentProperty.phone}></FormInputText>
+            <FormInputText
+              value={currentProperty.phone}
+              disabled
+            ></FormInputText>
           </FormGroup>
           <FormGroup>
             <FormLabel>Email:</FormLabel>
-            <FormInputText value={currentProperty.email}></FormInputText>
+            <FormInputText
+              value={currentProperty.email}
+              disabled
+            ></FormInputText>
           </FormGroup>
         </FormRow>
 

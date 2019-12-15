@@ -63,7 +63,7 @@ export default function Captations() {
       <BackGround>
         <Header />
         <Container>
-          <PageTitle>Captações</PageTitle>
+          <PageTitle>Captações Enviadas</PageTitle>
           <SentTable />
         </Container>
         <Footer />

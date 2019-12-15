@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import api from "../services/api";
 
@@ -9,7 +10,8 @@ import {
   TableButton,
   Pagination,
   PaginationButton,
-  PaginationInfo
+  PaginationInfo,
+  TableAlert
 } from "./global";
 
 export default function CaptationsTable() {
@@ -17,6 +19,7 @@ export default function CaptationsTable() {
   const [page, setPage] = useState(1);
   const [allPages, setAllPages] = useState([]);
   const token = localStorage.getItem("@userIdentification");
+  const history = useHistory();
 
   useEffect(() => {
     loadNewCaptations();
@@ -34,7 +37,7 @@ export default function CaptationsTable() {
       }
     });
 
-    const pages = await api.get(`/countSent`, {
+    const pages = await api.get(`/count`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -47,6 +50,10 @@ export default function CaptationsTable() {
     await setPage(page - 1);
 
     await loadNewCaptations();
+  }
+
+  async function openProperty(property) {
+    history.push(`/admin/property?code=${property}`);
   }
 
   return (
@@ -74,13 +81,25 @@ export default function CaptationsTable() {
               <TableData>{captations[index].neighborhood}</TableData>
               <TableData>{captations[index].finality}</TableData>
               <TableData>
-                {captations[index].isRead === true ? "Lida" : "Não Lida"}
+                {captations[index].isRead === true ? (
+                  <TableAlert sent>Lida</TableAlert>
+                ) : (
+                  <TableAlert>Não Lida</TableAlert>
+                )}
               </TableData>
               <TableData>
-                {captations[index].isSent === true ? "Enviada" : "Não Enviada"}
+                {captations[index].isSent === true ? (
+                  <TableAlert sent>Enviada</TableAlert>
+                ) : (
+                  <TableAlert>Não Enviada</TableAlert>
+                )}
               </TableData>
               <TableData>
-                <TableButton>Editar</TableButton>
+                <TableButton
+                  onClick={() => openProperty(captations[index].code)}
+                >
+                  Editar
+                </TableButton>
               </TableData>
             </tr>
           ))}

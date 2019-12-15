@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <>
       <NavBar>
-        <DivHeader onClick={() => handlePage("home")}>
+        <DivHeader onClick={() => handlePage("captations")}>
           <img src={ImageHeader} alt="" />
           <span>Central de Captações - Aluguel Jundiaí</span>
         </DivHeader>

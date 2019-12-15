@@ -28,7 +28,7 @@ export default class Admin extends Component {
     const info = query.get("info");
     const alreadyLogged = await localStorage.getItem("@userIdentification");
     if (alreadyLogged) {
-      const homepath = `/admin/home`;
+      const homepath = `/admin/captations`;
       this.props.history.push(homepath);
     }
 
@@ -65,7 +65,7 @@ export default class Admin extends Component {
     if (response) {
       const token = response.data.token;
       localStorage.setItem("@userIdentification", token);
-      const homepath = `/admin/home`;
+      const homepath = `/admin/captations`;
       this.props.history.push(homepath);
     }
   }
