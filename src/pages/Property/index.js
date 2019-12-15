@@ -9,7 +9,7 @@ import Slider from "../../components/Slider";
 import PropertyForm from "../../components/PropertyForm";
 
 import { Container, PageTitle } from "../../components/global";
-import { BackGround } from "./styles";
+import { BackGround, StatusRead, BackButton } from "./styles";
 
 export default function Property() {
   const [notLogged, setNotLogged] = useState([]);
@@ -74,7 +74,7 @@ export default function Property() {
     checkUser();
     loadProperty();
     setLoading(false);
-  }, []);
+  }, [currentProperty]);
 
   if (notLogged === true) {
     history.push("/admin?info=timeout");
@@ -95,7 +95,13 @@ export default function Property() {
       <BackGround>
         <Header />
         <Container>
+          <BackButton onClick={() => history.goBack()}>← Voltar</BackButton>
           <PageTitle>Imóvel: {code}</PageTitle>
+          {currentProperty.isSent ? (
+            <StatusRead sent>Enviada</StatusRead>
+          ) : (
+            <StatusRead>Não Enviada</StatusRead>
+          )}
           <Slider />
           <PropertyForm />
         </Container>

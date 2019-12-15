@@ -9,18 +9,47 @@ import {
   FormInputText,
   FormLabel,
   FormTitle,
-  StatusButton
+  FormInputSelect,
+  FormSendGroup,
+  SendButton,
+  SentButton
 } from "./styles";
 
 export default function PropertyForm() {
   const [currentProperty, setCurrentProperty] = useState([]);
+  const [brokers, setBrokers] = useState([]);
+  const [selectedBroker, setselectedBroker] = useState([]);
+  const [email, setEmail] = useState([]);
   const url = new URL(window.location.href);
   const code = url.searchParams.get("code");
 
   useEffect(() => {
+    async function loadBrokers() {
+      const token = await localStorage.getItem("@userIdentification");
+      const response = await api
+        .get(`/brokers`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .catch(function(error) {
+          console.log(error.response.data);
+        });
+
+      if (response) {
+        setBrokers(response.data);
+        console.log(response.data);
+      }
+
+      if (!response) {
+        setBrokers({
+          error: "Broker not found"
+        });
+      }
+    }
+
     async function loadProperty() {
       const token = await localStorage.getItem("@userIdentification");
-      console.log(token);
       const response = await api
         .get(`/captations/${code}`, {
           headers: {
@@ -43,7 +72,40 @@ export default function PropertyForm() {
       }
     }
     loadProperty();
-  }, []);
+    loadBrokers();
+  }, [currentProperty]);
+
+  async function sendCaptation() {
+    const token = await localStorage.getItem("@userIdentification");
+    const url = new URL(window.location.href);
+    const code = url.searchParams.get("code");
+    const response = await api
+      .post(
+        `/captation/send`,
+        {
+          email,
+          name: selectedBroker.toString(),
+          property: code.toString()
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      .catch(function(error) {
+        console.log(error.response.data);
+      });
+
+    if (response) {
+      alert(`Captação enviada para ${selectedBroker}`);
+      console.log(response.data);
+    }
+
+    if (!response) {
+      alert("Erro ao enviar captação. Tente novamente");
+    }
+  }
 
   return (
     <>
@@ -70,7 +132,7 @@ export default function PropertyForm() {
           </FormGroup>
           <FormGroup>
             <FormLabel>Bairro:</FormLabel>
-            <FormInputText value={currentProperty.finality}></FormInputText>
+            <FormInputText value={currentProperty.neighborhood}></FormInputText>
           </FormGroup>
         </FormRow>
 
@@ -92,16 +154,45 @@ export default function PropertyForm() {
           </FormGroup>
         </FormRow>
 
-        <FormTitle>Status:</FormTitle>
-        <FormRow>
-          <StatusButton>
-            {currentProperty.isSent ? (
-              <span>Enviado</span>
-            ) : (
-              <span>Não Enviado</span>
-            )}
-          </StatusButton>
-        </FormRow>
+        {currentProperty.isSent ? (
+          <FormRow>
+            <FormSendGroup>
+              <SentButton>
+                Enviada ao corretor {currentProperty.broker}
+              </SentButton>
+            </FormSendGroup>
+          </FormRow>
+        ) : (
+          <>
+            <FormTitle>Enviar para corretor</FormTitle>
+            <FormRow>
+              <FormGroup>
+                <FormLabel>
+                  <FormInputSelect
+                    onChange={e => {
+                      setselectedBroker(
+                        e.nativeEvent.target[e.target.selectedIndex].text
+                      );
+                      setEmail(e.target.value);
+                    }}
+                  >
+                    <option selected="selected">Selecione o corretor</option>
+                    {brokers.map((broker, index) => (
+                      <option key={broker._id} value={broker.email}>
+                        {broker.name}
+                      </option>
+                    ))}
+                  </FormInputSelect>
+                </FormLabel>
+              </FormGroup>
+            </FormRow>
+            <FormRow>
+              <FormSendGroup>
+                <SendButton onClick={() => sendCaptation()}>Enviar</SendButton>
+              </FormSendGroup>
+            </FormRow>
+          </>
+        )}
       </FormContainer>
     </>
   );

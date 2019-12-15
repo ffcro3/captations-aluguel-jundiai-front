@@ -28,6 +28,16 @@ export const FormGroup = styled.div`
   margin: 20px;
 `;
 
+export const FormSendGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin: 20px;
+`;
+
 export const FormInputText = styled.input.attrs({
   type: "Text"
 })`
@@ -39,6 +49,16 @@ export const FormInputText = styled.input.attrs({
   margin-right: 20px;
   padding: 10px;
   color: #333;
+`;
+
+export const FormInputSelect = styled.select`
+  height: 40px;
+  border: 1px #ccc solid;
+  border-radius: 3px;
+  width: 104%;
+  padding: 10px;
+  color: #333;
+  background: #fff;
 `;
 
 export const FormLabel = styled.label`
@@ -59,29 +79,37 @@ export const FormTitle = styled.text`
   margin-top: 15px;
 `;
 
-export const StatusButton = styled.button`
+export const SendButton = styled.button`
   display: flex;
   flex-direction: row;
   height: 50px;
   width: 200px;
   justify-content: center;
   align-items: center;
-  background: ${props => (props.sent ? "#77dd77" : "#c41d3c")};
+  background: #147d4e;
   border: none;
   border-radius: 4px;
   margin-bottom: 40px;
   margin-top: 20px;
-
-  span {
-  }
+  color: #fff;
 
   :hover {
-    background: #77dd77;
+    background: #4257d6;
     cursor: pointer;
-
-    span:after {
-      display: none;
-      content: "Enviar?";
-    }
   }
+`;
+
+export const SentButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  background: #147d4e;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  color: #fff;
 `;
