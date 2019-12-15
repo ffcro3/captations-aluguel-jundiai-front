@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import api from "../services/api";
 
@@ -17,6 +18,7 @@ export default function CaptationsTable() {
   const [page, setPage] = useState(1);
   const [allPages, setAllPages] = useState([]);
   const token = localStorage.getItem("@userIdentification");
+  const history = useHistory();
 
   useEffect(() => {
     loadNewCaptations();
@@ -47,6 +49,10 @@ export default function CaptationsTable() {
     await setPage(page - 1);
 
     await loadNewCaptations();
+  }
+
+  async function openProperty(property) {
+    history.push(`/admin/property?code=${property}`);
   }
 
   return (
@@ -80,7 +86,11 @@ export default function CaptationsTable() {
                 {captations[index].isSent === true ? "Enviada" : "Não Enviada"}
               </TableData>
               <TableData>
-                <TableButton>Editar</TableButton>
+                <TableButton
+                  onClick={() => openProperty(captations[index].code)}
+                >
+                  Editar
+                </TableButton>
               </TableData>
             </tr>
           ))}

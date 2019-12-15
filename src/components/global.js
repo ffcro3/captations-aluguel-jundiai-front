@@ -11,6 +11,7 @@ export const NavBar = styled.div`
   width: 100vw;
   background: #fff;
   box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 `;
 
 export const DivHeader = styled.div`
@@ -68,7 +69,7 @@ export const Container = styled.div`
 export const PageTitle = styled.h2`
   margin: 40px;
   margin-bottom: -10px;
-  color: #555;
+  color: #147d4e;
   font-weight: bold;
 `;
 
@@ -168,4 +169,20 @@ export const PageFooter = styled.div`
       }
     }
   }
+`;
+
+export const FormGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  height: auto;
+`;
+
+export const FormInputText = styled.input.attrs({
+  type: "Text"
+})`
+  height: 40px;
+  border: 1px #ccc solid;
+  border-radius: 3px;
+  width: 100%;
 `;
