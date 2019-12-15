@@ -10,7 +10,8 @@ import {
   TableButton,
   Pagination,
   PaginationButton,
-  PaginationInfo
+  PaginationInfo,
+  TableAlert
 } from "./global";
 
 export default function CaptationsTable() {
@@ -80,10 +81,18 @@ export default function CaptationsTable() {
               <TableData>{captations[index].neighborhood}</TableData>
               <TableData>{captations[index].finality}</TableData>
               <TableData>
-                {captations[index].isRead === true ? "Lida" : "Não Lida"}
+                {captations[index].isRead === true ? (
+                  <TableAlert sent>Lida</TableAlert>
+                ) : (
+                  <TableAlert>Não Lida</TableAlert>
+                )}
               </TableData>
               <TableData>
-                {captations[index].isSent === true ? "Enviada" : "Não Enviada"}
+                {captations[index].isSent === true ? (
+                  <TableAlert sent>Enviada</TableAlert>
+                ) : (
+                  <TableAlert>Não Enviada</TableAlert>
+                )}
               </TableData>
               <TableData>
                 <TableButton

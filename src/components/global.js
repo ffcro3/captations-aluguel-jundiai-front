@@ -105,6 +105,17 @@ export const TableHeader = styled.td`
   font-weight: 700;
 `;
 
+export const TableAlert = styled.div`
+  height: 20px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${props => (props.sent ? "#147d4e" : "#eb4034")};
+  color: #fff;
+  border-radius: 3px;
+`;
+
 export const TableButton = styled.button`
   height: 30px;
   width: 80%;
