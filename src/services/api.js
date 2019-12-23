@@ -2,7 +2,7 @@ import axios from "axios";
 import "dotenv/config";
 
 const api = axios.create({
-  baseURL: "http://localhost:5050",
+  baseURL: "http://192.168.15.43:5050",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"

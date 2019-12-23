@@ -10,7 +10,7 @@ import UserForm from "../../components/UserForm";
 import { Container } from "../../components/global";
 import { BackGround, BackButton } from "./styles";
 
-export default function Property() {
+export default function User() {
   const [notLogged, setNotLogged] = useState([]);
   const [loading, setLoading] = useState([]);
   const [exit] = useState([]);

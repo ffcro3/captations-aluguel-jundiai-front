@@ -10,7 +10,7 @@ import SentTable from "../../components/Tables/SentTable";
 import { Container, PageTitle } from "../../components/global";
 import { BackGround } from "./styles";
 
-export default function Captations() {
+export default function Sent() {
   const [notLogged, setNotLogged] = useState([]);
   const [loading, setLoading] = useState([]);
   const [exit] = useState([]);

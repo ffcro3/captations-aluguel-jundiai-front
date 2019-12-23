@@ -19,7 +19,7 @@ import {
 } from "./styles";
 import { width } from "dom-helpers";
 
-export default function Captations() {
+export default function Settings() {
   const [notLogged, setNotLogged] = useState([]);
   const [exit] = useState([]);
   const history = useHistory();
@@ -76,9 +76,7 @@ export default function Captations() {
             </IconContainer>
             <TextContainer>
               <span>Usuários</span>
-              <small>
-                Crie, edite, exclua usuários (Usuários do sistema e Corretores).
-              </small>
+              <small>Crie e edite (Usuários do sistema e Corretores).</small>
             </TextContainer>
           </SettingsContainer>
 
@@ -105,21 +103,6 @@ export default function Captations() {
               <small>
                 Sua aplicação está pesada? Exlua fotos de imóveis que já foram
                 direcionados.
-              </small>
-            </TextContainer>
-          </SettingsContainer>
-
-          <SettingsContainer onClick={() => goTo("reports")}>
-            <IconContainer>
-              <FaFileExcel
-                style={{ color: "#147d4e", height: "50px", width: "auto" }}
-              />
-            </IconContainer>
-            <TextContainer>
-              <span>Relatórios</span>
-              <small>
-                Exporte relatórios do sistema: Relatórios geral, relatórios de
-                enviados e relatórios de pendentes.
               </small>
             </TextContainer>
           </SettingsContainer>

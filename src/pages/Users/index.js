@@ -10,7 +10,7 @@ import UsersTable from "../../components/Tables/UsersTable";
 import { Container, PageTitle } from "../../components/global";
 import { BackGround } from "./styles";
 
-export default function Captations() {
+export default function Users() {
   const [notLogged, setNotLogged] = useState([]);
   const [loading, setLoading] = useState([]);
   const [exit] = useState([]);

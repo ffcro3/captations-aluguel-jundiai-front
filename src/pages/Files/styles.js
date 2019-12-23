@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Logotipo from "../../assets/logoFull.png";
-import BackgroundImage from "../../assets/jundiai.jpg";
 import Side from "../../assets/side.jpg";
 
 export const BackGround = styled.div`
@@ -8,26 +7,28 @@ export const BackGround = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url(${BackgroundImage});
+  height: 100%;
+  margin-top: 100px;
   background-repeat: no-repeat;
   background-size: cover;
 `;
 
+export const ChartTitle = styled.text`
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Container = styled.div`
-  @media (max-width: 600px) {
-    margin-top: 0px 100px;
-    width: 100%;
-    max-width: 80%;
-    max-height: 120%;
-  }
-  @media (min-width: 600px) {
-    width: 100%;
-    max-width: 40%;
-  }
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 40vw;
+  width: 100%;
   margin: -10px auto 0;
   box-shadow: 0px 0px 25px 8px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -46,7 +47,7 @@ export const SideImage = styled.img.attrs({
 export const Logo = styled.img.attrs({
   src: Logotipo
 })`
-  height: 60%;
+  height: 10vh;
   width: auto;
   background: transparent;
   margin-top: 10px;
@@ -58,6 +59,18 @@ export const Title = styled.h2`
   color: #555;
   font-weight: initial;
   margin-top: 10px;
+`;
+
+export const ChartContainer = styled.div`
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
+  max-width: 90%;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
 `;
 
 export const Header = styled.div`
@@ -90,6 +103,7 @@ export const InputEmail = styled.input.attrs({
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
+  border-radius: 6px;
   padding: 10px;
   color: #555;
 `;
@@ -102,6 +116,7 @@ export const InputPassword = styled.input.attrs({
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
+  border-radius: 6px;
   padding: 10px;
   color: #555;
   margin-top: 25px;
@@ -132,20 +147,64 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const ErrorMessage = styled.div`
+export const SettingsContainer = styled.div`
+  margin: 10px auto;
   display: flex;
-  flex-direction: column;
-  height: 45px;
+  flex-direction: row;
+  height: 100px;
   width: 100%;
-  background: #eb4034;
-  border-radius: 4px;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: center;
+  max-width: 60%;
+  border: 1px solid #66e8ae;
+  border-radius: 5px;
+  padding: 20px;
+
+  :first-child {
+    margin: 30px auto;
+  }
+
+  :last-child {
+    margin-bottom: 40px;
+  }
+
+  :hover {
+    background: #eee;
+    cursor: pointer;
+  }
 `;
 
-export const ErrorTitle = styled.text`
-  color: #fff;
-  font-size: 14px;
-  text-align: center;
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80px;
+`;
+
+export const TextContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  span {
+    font-size: 20px;
+    color: #147d4e;
+    font-weight: bold;
+  }
+
+  small {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+  }
+`;
+
+export const SettingsLogo = styled.img.attrs({
+  src: Logotipo
+})`
+  margin: 50px auto;
+  height: 100px;
+  width: auto;
 `;

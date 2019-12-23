@@ -1,33 +1,25 @@
 import styled from "styled-components";
 import Logotipo from "../../assets/logoFull.png";
-import BackgroundImage from "../../assets/jundiai.jpg";
 import Side from "../../assets/side.jpg";
 
 export const BackGround = styled.div`
+  margin-top: 100px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url(${BackgroundImage});
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 `;
 
 export const Container = styled.div`
-  @media (max-width: 600px) {
-    margin-top: 0px 100px;
-    width: 100%;
-    max-width: 80%;
-    max-height: 120%;
-  }
-  @media (min-width: 600px) {
-    width: 100%;
-    max-width: 40%;
-  }
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 40vw;
+  width: 100%;
   margin: -10px auto 0;
   box-shadow: 0px 0px 25px 8px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -46,7 +38,7 @@ export const SideImage = styled.img.attrs({
 export const Logo = styled.img.attrs({
   src: Logotipo
 })`
-  height: 60%;
+  height: 10vh;
   width: auto;
   background: transparent;
   margin-top: 10px;
@@ -90,6 +82,7 @@ export const InputEmail = styled.input.attrs({
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
+  border-radius: 6px;
   padding: 10px;
   color: #555;
 `;
@@ -102,6 +95,7 @@ export const InputPassword = styled.input.attrs({
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
+  border-radius: 6px;
   padding: 10px;
   color: #555;
   margin-top: 25px;
@@ -132,20 +126,36 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const ErrorMessage = styled.div`
+export const BackButton = styled.a`
   display: flex;
-  flex-direction: column;
-  height: 45px;
-  width: 100%;
-  background: #eb4034;
-  border-radius: 4px;
-  margin-top: 20px;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 80px;
+  background: #4257d6;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  margin-right: 15px;
+  margin-left: 30px;
+  margin-top: 30px;
+
+  :hover {
+    cursor: pointer;
+    background: #147d4e;
+  }
 `;
 
-export const ErrorTitle = styled.text`
-  color: #fff;
-  font-size: 14px;
-  text-align: center;
+export const StatusRead = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 90px;
+  background: ${props => (props.sent ? "#77dd77" : "#ed617b")};
+  margin-left: 40px;
+  margin-top: 15px;
+  color: ${props => (props.sent ? "#666" : "#fff")};
+  border-radius: 3px;
+  font-size: 11px;
 `;
