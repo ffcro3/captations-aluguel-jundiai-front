@@ -14,7 +14,7 @@ export default function Footer() {
         <FooterMain>
           <FooterSubContainer>
             <img
-              src="https://i.imgur.com/m9OSZmi.png"
+              src="https://i.imgur.com/tzfho6F.png"
               alt="Aluguel Jundiaí - Logotipo Rodapé"
             />
           </FooterSubContainer>
@@ -61,8 +61,7 @@ export default function Footer() {
                 alt="Facebook ícone"
               />
             </span>
-            <span> </span>
-            <span> </span>
+            <span />
             <span>ACESSE NOSSO BLOG:</span>
             <span>http://alugueljundiaiimoveis.blogspot.com.br/</span>
           </FooterSubContainer>

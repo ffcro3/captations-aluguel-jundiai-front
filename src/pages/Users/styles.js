@@ -125,3 +125,23 @@ export const LoginButton = styled.button`
     background: #147d4e;
   }
 `;
+
+export const BackButton = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 80px;
+  background: #4257d6;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  margin-right: 15px;
+  margin-left: 30px;
+  margin-top: 30px;
+
+  :hover {
+    cursor: pointer;
+    background: #147d4e;
+  }
+`;

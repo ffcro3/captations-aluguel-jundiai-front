@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 import UsersTable from "../../components/Tables/UsersTable";
 
 import { Container, PageTitle } from "../../components/global";
-import { BackGround } from "./styles";
+import { BackGround, BackButton } from "./styles";
 
 export default function Users() {
   const [notLogged, setNotLogged] = useState([]);
@@ -63,6 +63,7 @@ export default function Users() {
       <BackGround>
         <Header />
         <Container>
+        <BackButton onClick={() => history.goBack()}>← Voltar</BackButton>
           <PageTitle>Usuários</PageTitle>
           <UsersTable />
         </Container>

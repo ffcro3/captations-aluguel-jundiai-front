@@ -9,6 +9,7 @@ import Chart from "../../components/Charts/Files/Size";
 
 import { TiDeleteOutline } from "react-icons/ti";
 import { Container, PageTitle } from "../../components/global";
+import { BackButton} from './styles';
 
 import {
   BackGround,
@@ -68,6 +69,7 @@ export default function Files() {
         <Header />
         <Container>
           <PageTitle>Configurações</PageTitle>
+          <BackButton onClick={() => history.goBack()}>← Voltar</BackButton>
           <SettingsLogo />
           <ChartTitle>Espaço utilizado</ChartTitle>
           <Chart />
