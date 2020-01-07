@@ -3,12 +3,84 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 40px;
   width: 100%;
   border: none;
   background: #00a85a;
+
+  a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px 50px;
+    text-decoration: none;
+    height: 95%;
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    :hover {
+      background: #02c96d;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+  }
+
+`;
+
+export const HeaderDivider =  styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  background: transparent;
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 950px){
+    a {
+      display: none;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      display: flex;
+      height: 20px;
+      width: 20px;
+      right: 20px;
+      z-index: 999;
+      margin-top: 20px;
+
+      :hover {
+        cursor: pointer;
+      }
+    }
+  }
+`;
+
+export const MenuMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 168, 90, .8);
 `;
 
 export const HeroContainer = styled.div`
@@ -19,7 +91,120 @@ export const HeroContainer = styled.div`
   height: 420px;
   width: 100%;
   background: url("https://i.imgur.com/omIizWl.jpg");
-  background-size: 100%;
+  background-size: cover;
+`;
+
+export const HeroDivider = styled.div`
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 100%;
+  margin: 0x auto;
+
+  span {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 56px;
+    line-height: 73px;
+    color: #330F9A;
+  }
+
+  img {
+    height: auto;
+    width: 60%;
+  }
+
+  small {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    color: #FFFFFF;
+  }
+
+  @media (max-width: 1000px){
+    span {
+      font-size: 3em;
+    }
+  
+    small {
+      font-size: 2em;
+    }
+  }
+
+  @media (max-width: 768px){
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      font-size: 2em;
+      line-height: 130%;
+    }
+  
+    small {
+      font-size: 1em;
+    }
+  }
+
+  @media (max-width: 576px){
+    span {
+      font-size: 2em;
+      line-height: 100%;
+      
+    }
+  
+    small {
+      font-size: 1em;
+    }
+  }
+`;
+
+export const HeroDividerImage = styled.div`
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+  height: 80%;
+  width: 70%;
+
+  img {
+    height: auto;
+    width: 95%;
+  }
+
+  @media (max-width: 768px){
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      height: auto;
+      margin-top: -80px;
+      margin-bottom: 30px;
+    }
+  }
+
+`;
+
+export const HeroRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 
 export const BoxContainer = styled.div`
@@ -39,6 +224,7 @@ export const BoxContainer = styled.div`
     height: auto;
     width: 80%;
     margin: 0px auto;
+    margin-top: -70px;
   }
 `;
 
@@ -268,6 +454,11 @@ export const WhySubContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 50px;
+  
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const WhyImage = styled.div`
@@ -386,7 +577,7 @@ export const WantButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 15px;
-  width: 70%;
+  width: 50%;
   height: 68px;
   background: #00cd6e;
   border-radius: 5px;
@@ -394,7 +585,7 @@ export const WantButton = styled.button`
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 39px;
   border: none;
 
@@ -457,6 +648,18 @@ export const FooterSubContainer = styled.div`
     font-size: 16px;
     text-align: left;
     margin-bottom: 10px;
+  }
+  
+  a {
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 10px;
+    text-decoration: none;
+
+    :hover {
+      cursor: pointer;
+    }
   }
 
   img {

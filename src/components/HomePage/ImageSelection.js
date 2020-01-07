@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
 
 import {
   ImageSelectionContainer,
@@ -9,6 +10,7 @@ import {
 } from "./styles";
 
 export default function ImageSelection() {
+  const history = useHistory();
   return (
     <>
       <ImageSelectionContainer>
@@ -25,7 +27,7 @@ export default function ImageSelection() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </ImageText>
-          <ImageButton>
+          <ImageButton onClick={() => history.push('/register-property')}>
             <span>Saiba mais</span>
           </ImageButton>
         </ImageContainer>

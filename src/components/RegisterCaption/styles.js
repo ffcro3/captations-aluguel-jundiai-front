@@ -242,5 +242,5 @@ export const Terms = styled.span`
   line-height: 15px;
   color: #111;
   margin-bottom: 20px;
-  width: 100%
+  width: 80%
 `;
